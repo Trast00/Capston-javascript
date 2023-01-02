@@ -6,10 +6,10 @@
   "scripts": {
     "webpack": "webpack",
     "dev": "webpack --mode development",
-    "watch": "webpack --watch",
+    "watch": "jest --watch *.js",
     "start": "webpack serve --open",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage --env=jsdom"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,8 @@
     "css-loader": "^6.7.3",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
