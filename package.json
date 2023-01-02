@@ -1,0 +1,31 @@
+{
+  "name": "capston-javascript",
+  "version": "1.0.0",
+  "description": "This is a project done during the microverse program",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack",
+    "dev": "webpack --mode development",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trast00/Capston-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trast00/Capston-javascript/issues"
+  },
+  "homepage": "https://github.com/Trast00/Capston-javascript#readme",
+  "devDependencies": {
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
