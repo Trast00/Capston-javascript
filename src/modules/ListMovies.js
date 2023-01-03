@@ -110,8 +110,7 @@ export default class ListMovies {
     const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }//,
-        //body: JSON.stringify("Appname"),
+        headers: { 'Content-Type': 'application/json' }
       })
     //id1 = JJFDApwrWpJNeY3nWzvU
     console.log(data.json())
