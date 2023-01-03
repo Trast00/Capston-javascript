@@ -71,13 +71,13 @@ export default class ListMovies {
     console.log(data.json())
   }
 
-  addLike = async (id, likes) => {
+  saveLike = async (id, likes) => {
     const result = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 'item_id': id, 'likes': likes})
     })
-    console.log(result)
-    
+
+    return result.ok
   }
 }
