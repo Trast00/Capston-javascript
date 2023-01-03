@@ -34,6 +34,14 @@ const showPopup = (movie) => {
           </div>`;
   body.style.position = 'fixed';
   projectModal.innerHTML = modalVisible;
+
+  const closeModal = document.getElementsByClassName('close');
+  for (let i = 0; i < closeModal.length; i += 1) {
+    closeModal[i].addEventListener('click', () => {
+      projectModal.style.display = 'none';
+      body.style.position = 'relative';
+    });
+  }
 };
 
 export default showPopup;
