@@ -2,16 +2,13 @@
 export default class ListMovies {
   constructor() {
     this.list = []
-    this.urlApi = "https://api.tvmaze.com/shows/" //+id
-    this.idLastDisplayed = 0
+    this.urlApi = "https://api.tvmaze.com/shows" //+id
+    this.currentPage = 1
   }
 
   /* Display (Load dynnamically) a limited number of movies */
-  display = (limit) => {
-    const listDisplayed = this.list.slice(this.idLastDisplayed, this.idLastDisplayed + limit)
-    this.idLastDisplayed += limit
-    console.log(this.idLastDisplayed)
-    listDisplayed.forEach(movie => {
+  display = () => {
+    this.list.forEach(movie => {
       //dynamic load of list of movies
       const liMovies = document.createElement('li')
       liMovies.classList.add('flex-center', 'movie')
@@ -29,7 +26,7 @@ export default class ListMovies {
       const divLikes = document.createElement('div')
       divLikes.classList.add('flex-center', 'likes')
       const iconLike = document.createElement('i')
-      iconLike.classList.add('fa-reguar', 'fa-heart')
+      iconLike.classList.add('fa-regular', 'fa-heart')
       const pLike = document.createElement('p')
       pLike.textContent = "3 Like"
 
@@ -51,7 +48,7 @@ export default class ListMovies {
   /* Get list of movies with a GET request to the API:  */
   getList = async () => {
     //API Request
-    const data = await fetch ("https://api.tvmaze.com/shows")
+    const data = await fetch (`${this.urlApi}?page=${this.currentPage}`)
     await data.json().then((data) => {
       this.list = data
       console.log('list movies getted: ', this.list)
