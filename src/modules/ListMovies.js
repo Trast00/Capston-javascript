@@ -3,8 +3,11 @@ import showPopup from './popup.js';
 export default class ListMovies {
   constructor() {
     this.list = [];
-    this.urlApi = 'https://api.tvmaze.com/shows'; // +id
+    this.listLikedMovies = [];
     this.currentPage = 1;
+    this.urlApi = 'https://api.tvmaze.com/shows';
+    this.urlInvolvementAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+    this.appID = 'JJFDApwrWpJNeY3nWzvU';
   }
 
   /* Display (Load dynnamically) a limited number of movies */
@@ -17,7 +20,7 @@ export default class ListMovies {
 
       const wrapper = document.createElement('div');
       const img = document.createElement('img');
-      img.src = movie.image.medium; // `${this.urlApi}${movie.id}/images`
+      img.src = movie.image.medium;
       img.alt = `Movies ${movie.name} image`;
 
       const content = document.createElement('div');
@@ -29,7 +32,7 @@ export default class ListMovies {
       const iconLike = document.createElement('i');
       iconLike.classList.add('fa-regular', 'fa-heart');
       const pLike = document.createElement('p');
-      pLike.textContent = '3 Like';
+      if (this.listLikedMovies.containt) { pLike.textContent = '3 Like'; }
 
       const btnShowComment = document.createElement('button');
       btnShowComment.classList.add('btn-show-comment');
@@ -52,12 +55,10 @@ export default class ListMovies {
 
   /* Get list of movies with a GET request to the API:  */
   getList = async () => {
-  //  API Request
+    // API Request
     const data = await fetch(`${this.urlApi}?page=${this.currentPage}`);
     await data.json().then((data) => {
       this.list = data;
-      // eslint-disable-next-line no-console
-      console.log('list movies getted: ', this.list);
     });
   }
 }
