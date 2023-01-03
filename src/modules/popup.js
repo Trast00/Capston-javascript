@@ -12,7 +12,14 @@ const showPopup = (movie) => {
                   <div class="close"> <i class="fa-solid fa-xmark"></i></div>
               </div>
               <div class="flex-center description">
-                  movie for kids and adults
+              <div class="start-end">
+              <p> Premiered: <span>${movie.premiered}</span></p>
+              <p>Ended: <span>${movie.ended}</span></p>
+             </div>
+             <div class="movie-for">
+              <p>Genres: <span>${movie.genres}</span></p>
+              <p>language: <span>${movie.language}</span></p>
+             </div>
               </div>
               <h4 class="flex-center"> comments(<span>2</span>)</h4>
               <div class="flex-center comment-modal">
