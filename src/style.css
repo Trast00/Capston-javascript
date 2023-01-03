@@ -76,9 +76,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .movie-content .likes {
   margin-left: 8px;
 }
+
 .movie-content .likes i {
   margin-right: 8px;
 }
@@ -94,6 +96,16 @@
   width: 90%;
   padding: 8px;
   justify-content: space-between;
+}
+
+button,
+textarea,
+.form input {
+  border: 2px solid;
+  width: 250px;
+  height: 40px;
+  border-radius: 8px;
+  margin: 10px 0;
 }
 
 .pages button {
@@ -118,7 +130,7 @@
 }
 
 .image-close .fa-solid {
-  padding-top: 0px;
+  padding-top: 0;
   font-size: 40px;
 }
 
@@ -134,7 +146,7 @@
 }
 
 .start-end p,
-.movie-for p{
+.movie-for p {
   padding: 10px 10px;
 }
 
@@ -147,23 +159,12 @@
   align-items: flex-start;
 }
 
-button,
-textarea,
-.form input {
-  border: 2px solid;
-  width: 250px;
-  height: 40px;
-  border-radius: 8px;
-  margin: 10px 0;
-}
-
 .textarea,
 #name,
 .commnet-btn {
   background: #fff;
   font-size: 17px;
 }
-
 
 #name {
   padding: 0 10px;
