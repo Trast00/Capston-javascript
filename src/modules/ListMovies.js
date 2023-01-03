@@ -19,7 +19,7 @@ export default class ListMovies {
 
       const wrapper = document.createElement('div')
       const img = document.createElement('img')
-      img.src = movie.url
+      img.src = movie.image.medium //`${this.urlApi}${movie.id}/images`
       img.alt = `Movies ${movie.name} image`
 
       const content = document.createElement('div')
