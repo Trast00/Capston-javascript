@@ -76,9 +76,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .movie-content .likes {
   margin-left: 8px;
 }
+
 .movie-content .likes i {
   margin-right: 8px;
 }
