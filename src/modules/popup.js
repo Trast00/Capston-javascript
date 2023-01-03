@@ -1,11 +1,12 @@
 const showPopup = (movie) => {
   const projectModal = document.querySelector('.popup');
+  const body = document.querySelector('body');
   projectModal.style.display = 'block';
   const modalVisible = `
               <div class="popup-modal">
               <div class=" flex-center image-close">
                   <div class="modal-image">
-                      <img src="../img/logo-social.png" alt="">
+                      <img src="${movie.image.medium}" alt="">
                       <h3 class="flex-center movie-title">${movie.name}</h3>
                   </div>
                   <i class="fas fa-times-circle"></i>
@@ -31,6 +32,7 @@ const showPopup = (movie) => {
               </div>
   
           </div>`;
+  body.style.position = 'fixed';
   projectModal.innerHTML = modalVisible;
 };
 

@@ -106,15 +106,17 @@
 }
 
 .popup {
+  display: none;
   position: absolute;
-  inset: 0;
+  inset: 0 0 -20px 0;
   background: #fff;
   flex-direction: column;
 }
 
 .modal-image img {
   width: 70vw;
-  max-height: 400px;
+  padding-top: 10px;
+  max-height: 350px;
   object-fit: contain;
 }
 
@@ -138,7 +140,7 @@ textarea,
   width: 250px;
   height: 40px;
   border-radius: 8px;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .textarea,
