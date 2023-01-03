@@ -31,12 +31,51 @@ export default class ListMovies {
       const iconLike = document.createElement('i')
       iconLike.classList.add('fa-regular', 'fa-heart')
       const pLike = document.createElement('p')
-      if(this.listLikedMovies.containt)
-      pLike.textContent = "3 Like"
+      pLike.textContent = ""
 
       const btnShowComment = document.createElement('button')
       btnShowComment.classList.add('btn-show-comment')
       btnShowComment.textContent = 'Comments'
+
+      /* Event Listner */
+
+      iconLike.addEventListener('click', async (event) => {
+        const id = liMovies.id
+        let likes = 0
+
+        //find the corrent number of like
+        this.listLikedMovies.filter((item) => {
+          if (item.item_id === id){
+            likes = item.likes
+          }
+        })
+
+        //add a like and display
+        
+        const isLiking = event.currentTarget.classList.contains('fa-regular')
+        if(isLiking){ 
+          likes += 1
+          event.currentTarget.classList.remove('fa-regular', 'fa-heart')
+          event.currentTarget.classList.add('fa-solid', 'fa-heart')
+        }
+        else { 
+          likes -= 1
+          event.currentTarget.classList.remove('fa-solid', 'fa-heart')
+          event.currentTarget.classList.add('fa-regular', 'fa-heart')
+
+        }
+        event.currentTarget.nextSibling.textContent = `${likes} like`
+
+        //save the like and wait for a result before display
+        const isSaved = await this.saveLike(id, likes)
+      })
+
+      //find the corrent number of like
+      this.listLikedMovies.filter((item) => {
+        if (item.item_id === liMovies.id){
+          pLike.textContent = `${item.likes} like`
+        }
+      })
 
       /* List of append */
       divLikes.append(iconLike, pLike)
@@ -49,13 +88,20 @@ export default class ListMovies {
     });
   }
 
-  /* Get list of movies with a GET request to the API:  */
-  getList = async () => {
+  /* Get list of movies and Like with a GET request to the API:  */
+  getListMovies = async () => {
     //API Request
     const data = await fetch (`${this.urlApi}?page=${this.currentPage}`)
-    await data.json().then((data) => {
-      this.list = data
+    await data.json().then((listMovies) => {
+      this.list = listMovies
       console.log('list movies getted: ', this.list)
+    })
+  }
+
+  getListLikes = async () => {
+    const data = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`)
+    await data.json().then((listLikedMovies) => {
+      this.listLikedMovies = listLikedMovies
     })
   }
 

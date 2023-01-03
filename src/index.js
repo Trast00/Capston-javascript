@@ -6,8 +6,9 @@ const ulListMovies = document.getElementById('list-movies')
 const listMovies = new ListMovies()
 
 window.addEventListener('load', async () => {
-  await listMovies.getList()
-  listMovies.display(10)
+  await listMovies.getListLikes()
+  await listMovies.getListMovies()
+  listMovies.display()
   //listMovies.addLike(1, "-1")
   //listMovies.createApp()
 })
