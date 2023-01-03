@@ -3,21 +3,21 @@ import showPopup from './popup.js';
 export default class ListMovies {
   constructor() {
     this.list = [];
-    this.urlApi = 'https://api.tvmaze.com/shows'; //+id
+    this.urlApi = 'https://api.tvmaze.com/shows'; // +id
     this.currentPage = 1;
   }
 
   /* Display (Load dynnamically) a limited number of movies */
   display = () => {
     this.list.forEach((movie) => {
-      //dynamic load of list of movies
+      // dynamic load of list of movies
       const liMovies = document.createElement('li');
       liMovies.classList.add('flex-center', 'movie');
       liMovies.id = `movie-${movie.id}`;
 
       const wrapper = document.createElement('div');
       const img = document.createElement('img');
-      img.src = movie.image.medium; //`${this.urlApi}${movie.id}/images`
+      img.src = movie.image.medium; // `${this.urlApi}${movie.id}/images`
       img.alt = `Movies ${movie.name} image`;
 
       const content = document.createElement('div');
@@ -52,10 +52,11 @@ export default class ListMovies {
 
   /* Get list of movies with a GET request to the API:  */
   getList = async () => {
-    //API Request
-    const data = await fetch (`${this.urlApi}?page=${this.currentPage}`);
+  //  API Request
+    const data = await fetch(`${this.urlApi}?page=${this.currentPage}`);
     await data.json().then((data) => {
       this.list = data;
+      // eslint-disable-next-line no-console
       console.log('list movies getted: ', this.list);
     });
   }
