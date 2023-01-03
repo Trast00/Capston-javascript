@@ -98,6 +98,16 @@
   justify-content: space-between;
 }
 
+button,
+textarea,
+.form input {
+  border: 2px solid;
+  width: 250px;
+  height: 40px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
 .pages button {
   width: 120px;
   height: 40px;
@@ -105,6 +115,66 @@
 
 .pages button:disabled {
   opacity: 0.7;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  inset: 0 0 -20px 0;
+  background: #fff;
+  flex-direction: column;
+}
+
+.close {
+  height: 300px;
+}
+
+.image-close .fa-solid {
+  padding-top: 0;
+  font-size: 40px;
+}
+
+.modal-image img {
+  width: 70vw;
+  padding-top: 10px;
+  max-height: 350px;
+  object-fit: contain;
+}
+
+.description {
+  margin: 20px 0;
+}
+
+.start-end p,
+.movie-for p {
+  padding: 10px 10px;
+}
+
+.comment-modal {
+  flex-direction: column;
+}
+
+.form {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.textarea,
+#name,
+.commnet-btn {
+  background: #fff;
+  font-size: 17px;
+}
+
+#name {
+  padding: 0 10px;
+}
+
+.textarea {
+  padding: 10px;
+  margin: 10px 0;
+  width: 300px;
+  height: 120px;
 }
 
 .foot {

@@ -1,3 +1,5 @@
+import showPopup from './popup.js';
+
 export default class ListMovies {
   constructor() {
     this.list = [];
@@ -36,6 +38,10 @@ export default class ListMovies {
       btnShowComment.classList.add('btn-show-comment');
       btnShowComment.textContent = 'Comments';
 
+      btnShowComment.addEventListener('click', () => {
+        showPopup(movie);
+      });
+
       /* List of append */
       divLikes.append(iconLike, pLike);
       content.append(h3, divLikes);
@@ -54,25 +60,5 @@ export default class ListMovies {
     await data.json().then((data) => {
       this.list = data;
     });
-  }
-
-  /* involvement API: create a new APP */
-  createApp = async () => {
-    const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
-    return data;
-  }
-
-  saveLike = async (id, likes) => {
-    const result = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item_id: id, likes }),
-    });
-
-    return result.ok;
   }
 }
