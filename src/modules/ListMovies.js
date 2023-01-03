@@ -1,8 +1,11 @@
 export default class ListMovies {
   constructor() {
     this.list = [];
-    this.urlApi = 'https://api.tvmaze.com/shows'; // +id
+    this.listLikedMovies = [];
     this.currentPage = 1;
+    this.urlApi = 'https://api.tvmaze.com/shows';
+    this.urlInvolvementAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+    this.appID = 'JJFDApwrWpJNeY3nWzvU';
   }
 
   /* Display (Load dynnamically) a limited number of movies */
@@ -15,7 +18,7 @@ export default class ListMovies {
 
       const wrapper = document.createElement('div');
       const img = document.createElement('img');
-      img.src = movie.image.medium; // `${this.urlApi}${movie.id}/images`
+      img.src = movie.image.medium;
       img.alt = `Movies ${movie.name} image`;
 
       const content = document.createElement('div');
@@ -27,7 +30,7 @@ export default class ListMovies {
       const iconLike = document.createElement('i');
       iconLike.classList.add('fa-regular', 'fa-heart');
       const pLike = document.createElement('p');
-      pLike.textContent = '3 Like';
+      if (this.listLikedMovies.containt) { pLike.textContent = '3 Like'; }
 
       const btnShowComment = document.createElement('button');
       btnShowComment.classList.add('btn-show-comment');
@@ -51,5 +54,25 @@ export default class ListMovies {
     await data.json().then((data) => {
       this.list = data;
     });
+  }
+
+  /* involvement API: create a new APP */
+  createApp = async () => {
+    const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+    return data;
+  }
+
+  saveLike = async (id, likes) => {
+    const result = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item_id: id, likes }),
+    });
+
+    return result.ok;
   }
 }

@@ -5,5 +5,5 @@ const listMovies = new ListMovies();
 
 window.addEventListener('load', async () => {
   await listMovies.getList();
-  listMovies.display(10);
+  listMovies.display();
 });
