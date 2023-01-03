@@ -133,6 +133,11 @@
   margin: 20px 0;
 }
 
+.start-end p,
+.movie-for p{
+  padding: 10px 10px;
+}
+
 .comment-modal {
   flex-direction: column;
 }
