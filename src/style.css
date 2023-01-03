@@ -113,6 +113,15 @@
   flex-direction: column;
 }
 
+.close {
+  height: 300px;
+}
+
+.image-close .fa-solid {
+  padding-top: 0px;
+  font-size: 40px;
+}
+
 .modal-image img {
   width: 70vw;
   padding-top: 10px;

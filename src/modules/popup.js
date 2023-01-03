@@ -4,12 +4,12 @@ const showPopup = (movie) => {
   projectModal.style.display = 'block';
   const modalVisible = `
               <div class="popup-modal">
-              <div class=" flex-center image-close">
+              <div class="image-close flex-center">
                   <div class="modal-image">
                       <img src="${movie.image.medium}" alt="">
                       <h3 class="flex-center movie-title">${movie.name}</h3>
                   </div>
-                  <i class="fas fa-times-circle"></i>
+                  <div class="close"> <i class="fa-solid fa-xmark"></i></div>
               </div>
               <div class="flex-center description">
                   movie for kids and adults
