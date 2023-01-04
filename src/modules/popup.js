@@ -51,4 +51,4 @@ const showPopup = (movie) => {
   }
 };
 
-export default showPopup;
+module.exports = showPopup;

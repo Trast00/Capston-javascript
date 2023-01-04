@@ -1,6 +1,6 @@
-import showPopup from './popup.js';
+const showPopup = require('./popup.js');
 
-export default class ListMovies {
+class ListMovies {
   constructor() {
     this.list = [];
     this.listLikedMovies = [];
@@ -144,3 +144,5 @@ export default class ListMovies {
     return data;
   }
 }
+
+module.exports = ListMovies;
