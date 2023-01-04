@@ -1,6 +1,7 @@
-import { showPopup } from './popup.js';
-import getComment from './getComments.js';
-import postComment from './displayComment.js';
+// import { showPopup } from './popup.js';
+// import getComment from './getComments.js';
+// import postComment from './displayComment.js';
+import PopupMovies from './PopupMovies.js';
 
 export default class ListMovies {
   constructor() {
@@ -42,9 +43,11 @@ export default class ListMovies {
 
       /* Event Listner */
       btnShowComment.addEventListener('click', () => {
-        showPopup(movie);
-        postComment();
-       // getComment();
+        const popup = new PopupMovies();
+
+        popup.showPopup(movie);
+        popup.displayComment();
+        popup.getComment();
       });
       /* List of append */
       divLikes.append(iconLike, pLike);
