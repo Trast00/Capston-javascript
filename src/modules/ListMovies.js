@@ -96,14 +96,11 @@ export default class ListMovies {
     });
   }
 
-  /* involvement API: create a new APP */
-  createApp = async () => {
-    const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
-    return data;
+  getListLikes = async () => {
+    const data = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`)
+    await data.json().then((listLikedMovies) => {
+      this.listLikedMovies = listLikedMovies
+    })
   }
 
   saveLike = async (id, likes) => {
@@ -114,5 +111,15 @@ export default class ListMovies {
     });
 
     return result.ok;
+  }
+
+  /* involvement API: create a new APP */
+  createApp = async () => {
+    const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+    return data;
   }
 }
