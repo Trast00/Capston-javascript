@@ -8,5 +8,3 @@ window.addEventListener('load', async () => {
   await listMovies.getListMovies();
   listMovies.display();
 });
-
-

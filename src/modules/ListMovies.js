@@ -1,5 +1,4 @@
-
-const showPopup = require('./popup.js')
+const showPopup = require('./popup.js');
 
 class ListMovies {
   constructor() {
