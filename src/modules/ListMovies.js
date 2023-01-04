@@ -1,3 +1,5 @@
+import showPopup from './popup.js';
+
 export default class ListMovies {
   constructor() {
     this.list = [];
@@ -37,6 +39,18 @@ export default class ListMovies {
       btnShowComment.textContent = 'Comments';
 
       /* Event Listner */
+      btnShowComment.addEventListener('click', () => {
+        showPopup(movie);
+
+        /* List of append */
+        divLikes.append(iconLike, pLike);
+        content.append(h3, divLikes);
+        wrapper.append(img, content);
+        liMovies.append(wrapper, btnShowComment);
+
+        const ulListMovies = document.getElementById('list-movies');
+        ulListMovies.append(liMovies);
+      });
 
       iconLike.addEventListener('click', async (event) => {
         const { id } = liMovies;
@@ -71,15 +85,6 @@ export default class ListMovies {
         }
         return item;
       });
-
-      /* List of append */
-      divLikes.append(iconLike, pLike);
-      content.append(h3, divLikes);
-      wrapper.append(img, content);
-      liMovies.append(wrapper, btnShowComment);
-
-      const ulListMovies = document.getElementById('list-movies');
-      ulListMovies.append(liMovies);
     });
   }
 
@@ -90,25 +95,5 @@ export default class ListMovies {
     await data.json().then((data) => {
       this.list = data;
     });
-  }
-
-  /* involvement API: create a new APP */
-  createApp = async () => {
-    const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
-    return data;
-  }
-
-  saveLike = async (id, likes) => {
-    const result = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item_id: id, likes }),
-    });
-
-    return result.ok;
   }
 }
