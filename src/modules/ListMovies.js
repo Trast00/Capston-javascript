@@ -59,7 +59,7 @@ export default class ListMovies {
         this.listLikedMovies.filter((item, index) => {
           if (item.item_id === id) {
             likes = item.likes;
-            likeIndex = index
+            likeIndex = index;
           }
           return item;
         });
@@ -77,15 +77,15 @@ export default class ListMovies {
         }
         event.currentTarget.nextSibling.textContent = `${likes} like`;
 
-        //save like on the list
-        if (likeIndex === -1){
-          this.listLikedMovies.push({'item_id': id, 'likes': likes})
+        // save like on the list
+        if (likeIndex === -1) {
+          this.listLikedMovies.push({ item_id: id, likes });
         } else {
-          this.listLikedMovies[likeIndex].likes = likes 
+          this.listLikedMovies[likeIndex].likes = likes;
         }
 
-        //save like on the API
-        this.saveLike(id, likes)
+        // save like on the API
+        this.saveLike(id, likes);
       });
 
       // find the corrent number of like
@@ -95,8 +95,6 @@ export default class ListMovies {
         }
         return item;
       });
-
-
     });
   }
 
@@ -110,10 +108,10 @@ export default class ListMovies {
   }
 
   getListLikes = async () => {
-    const data = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`)
+    const data = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`);
     await data.json().then((listLikedMovies) => {
-      this.listLikedMovies = listLikedMovies
-    })
+      this.listLikedMovies = listLikedMovies;
+    });
   }
 
   saveLike = async (id, likes) => {
