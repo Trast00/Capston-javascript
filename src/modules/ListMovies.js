@@ -44,9 +44,8 @@ export default class ListMovies {
       /* Event Listner */
       btnShowComment.addEventListener('click', () => {
         const popup = new PopupMovies();
-
         popup.showPopup(movie);
-        popup.displayComment();
+        popup.displayAllComment();
         popup.getComment();
       });
       /* List of append */
