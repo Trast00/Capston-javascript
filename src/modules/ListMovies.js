@@ -12,8 +12,8 @@ export default class ListMovies {
 
   /* add a movie to the list of movies */
   addMovie = (movie) => {
-    this.list.push(movie)
-    this.display(movie)
+    this.list.push(movie);
+    this.display(movie);
   }
 
   /* Display (Load dynnamically) a limited number of movies */
@@ -71,7 +71,7 @@ export default class ListMovies {
 
       // add a like and display
       likes += 1;
-      const icons = event.currentTarget
+      const icons = event.currentTarget;
       icons.classList.remove('fa-regular', 'fa-heart');
       icons.classList.add('fa-solid', 'fa-heart');
       icons.nextSibling.textContent = `${likes} like`;
@@ -79,7 +79,7 @@ export default class ListMovies {
       setTimeout(() => {
         icons.classList.remove('fa-solid', 'fa-heart');
         icons.classList.add('fa-regular', 'fa-heart');
-      }, 400)
+      }, 400);
 
       // save like on the list
       if (likeIndex === -1) {
@@ -99,8 +99,8 @@ export default class ListMovies {
       return item;
     });
 
-    //Update the count
-    document.getElementById('count-movies').textContent = document.querySelectorAll('.movie').length
+    // Update the count
+    document.getElementById('count-movies').textContent = document.querySelectorAll('.movie').length;
   }
 
   /* Get list of movies with a GET request to the API:  */
@@ -110,8 +110,8 @@ export default class ListMovies {
     await data.json().then((data) => {
       this.list = data;
       this.list.forEach((movie) => {
-        if (movie != undefined){
-          this.addMovie(movie)
+        if (movie !== undefined) {
+          this.addMovie(movie);
         }
       });
     });
@@ -125,7 +125,7 @@ export default class ListMovies {
   }
 
   saveLike = async (id, like) => {
-    const liked = { item_id: id, 'likes': like }
+    const liked = { item_id: id, likes: like };
     const result = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -1,3 +1,3 @@
-const countMovies = () => {
-  return document.querySelectorAll('.movie').length
-}
+const countMovies = () => document.querySelectorAll('.movie').length;
+
+countMovies();
