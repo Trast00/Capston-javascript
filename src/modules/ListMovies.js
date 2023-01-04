@@ -38,6 +38,8 @@ export default class ListMovies {
       btnShowComment.classList.add('btn-show-comment')
       btnShowComment.textContent = 'Comments'
 
+      
+
       /* List of append */
       divLikes.append(iconLike, pLike)
       content.append(h3, divLikes)
@@ -64,11 +66,9 @@ export default class ListMovies {
     const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }//,
-        //body: JSON.stringify("Appname"),
+        headers: { 'Content-Type': 'application/json' }
       })
-    //id1 = JJFDApwrWpJNeY3nWzvU
-    console.log(data.json())
+      return data
   }
 
   saveLike = async (id, likes) => {
