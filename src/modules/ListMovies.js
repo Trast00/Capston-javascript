@@ -11,8 +11,8 @@ export default class ListMovies {
   }
 
   /* add a movie to the list of movies */
-  addMovie = (id, likes) => {
-    this.list.push({'item_id': id, 'likes': likes})
+  addMovie = (movie) => {
+    this.list.push(movie)
     this.display(movie)
   }
 
@@ -21,7 +21,7 @@ export default class ListMovies {
     // dynamic load of list of movies
     const liMovies = document.createElement('li');
     liMovies.classList.add('flex-center', 'movie');
-    liMovies.id = `movie-${movie.item_id}`;
+    liMovies.id = `movie-${movie.id}`;
 
     const wrapper = document.createElement('div');
     const img = document.createElement('img');
@@ -70,24 +70,25 @@ export default class ListMovies {
       });
 
       // add a like and display
-      const isLiking = event.currentTarget.classList.contains('fa-regular');
-      if (isLiking) {
-        likes += 1;
-        event.currentTarget.classList.remove('fa-regular', 'fa-heart');
-        event.currentTarget.classList.add('fa-solid', 'fa-heart');
-      } else {
-        likes -= 1;
-        event.currentTarget.classList.remove('fa-solid', 'fa-heart');
-        event.currentTarget.classList.add('fa-regular', 'fa-heart');
-      }
-      event.currentTarget.nextSibling.textContent = `${likes} like`;
+      likes += 1;
+      const icons = event.currentTarget
+      icons.classList.remove('fa-regular', 'fa-heart');
+      icons.classList.add('fa-solid', 'fa-heart');
+      icons.nextSibling.textContent = `${likes} like`;
+
+      setTimeout(() => {
+        icons.classList.remove('fa-solid', 'fa-heart');
+        icons.classList.add('fa-regular', 'fa-heart');
+      }, 400)
 
       // save like on the list
       if (likeIndex === -1) {
         this.listLikedMovies.push({ item_id: id, likes });
       } else {
         this.listLikedMovies[likeIndex].likes = likes;
+        console.log(this.listLikedMovies[likeIndex].likes)
       }
+      
 
       // save like on the API
       this.saveLike(id, likes);
@@ -109,7 +110,9 @@ export default class ListMovies {
     await data.json().then((data) => {
       this.list = data;
       this.list.forEach((movie) => {
-        this.display(movie)
+        if (movie != undefined){
+          this.addMovie(movie)
+        }
       });
     });
   }
@@ -118,16 +121,19 @@ export default class ListMovies {
     const data = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`);
     await data.json().then((listLikedMovies) => {
       this.listLikedMovies = listLikedMovies;
+      console.log('list like:', this.listLikedMovies)
     });
   }
 
-  saveLike = async (id, likes) => {
+  saveLike = async (id, like) => {
+    const liked = { item_id: id, 'likes': like }
     const result = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item_id: id, likes }),
+      body: JSON.stringify(liked),
     });
 
+    console.log('saved like', liked, 'at ID:', id, 'result:', result.ok)
     return result.ok;
   }
 
