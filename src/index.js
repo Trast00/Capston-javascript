@@ -6,5 +6,7 @@ const listMovies = new ListMovies();
 window.addEventListener('load', async () => {
   await listMovies.getListLikes();
   await listMovies.getListMovies();
-  // listMovies.display();
+  listMovies.display();
 });
+
+

@@ -1,3 +1,3 @@
 const countMovies = () => document.querySelectorAll('.movie').length;
 
-countMovies();
+module.exports = countMovies;
