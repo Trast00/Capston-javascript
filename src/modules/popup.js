@@ -1,6 +1,12 @@
+import sendComment from './Comment.js';
+import postComment from './displayComment.js';
+
+let currentId = -1;
+
 const showPopup = (movie) => {
+  currentId = movie.id;
   const projectModal = document.querySelector('.popup');
-  const body = document.querySelector('body');
+  const body = document.querySelector('main');
   projectModal.style.display = 'block';
   const modalVisible = `
               <div class="popup-modal">
@@ -32,8 +38,8 @@ const showPopup = (movie) => {
               <div class="flex-center type-comment-modal">
                   <form class="form flex-center">
                       <input type="text" name="name" id="name" placeholder="Your name">
-                      <textarea class="textarea" name="commnet" id="comment" cols="30" rows="10"></textarea>
-                      <button class="commnet-btn" type="submit">comment</button>
+                      <textarea class="textarea" name="comment" id="comment" cols="30" rows="10"></textarea>
+                      <button class="commnet-btn">comment</button>
                   </form>
   
               </div>
@@ -49,6 +55,8 @@ const showPopup = (movie) => {
       body.style.position = 'relative';
     });
   }
+  sendComment();
+  postComment();
 };
 
-export default showPopup;
+export { showPopup, currentId };
