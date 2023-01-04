@@ -38,10 +38,10 @@ export default class ListMovies {
       btnShowComment.classList.add('btn-show-comment');
       btnShowComment.textContent = 'Comments';
 
+      /* Event Listner */
       btnShowComment.addEventListener('click', () => {
         showPopup(movie);
       });
-
       /* List of append */
       divLikes.append(iconLike, pLike);
       content.append(h3, divLikes);
@@ -50,6 +50,40 @@ export default class ListMovies {
 
       const ulListMovies = document.getElementById('list-movies');
       ulListMovies.append(liMovies);
+
+      iconLike.addEventListener('click', async (event) => {
+        const { id } = liMovies;
+        let likes = 0;
+
+        // find the corrent number of like
+        this.listLikedMovies.filter((item) => {
+          if (item.item_id === id) {
+            likes = item.likes;
+          }
+          return item;
+        });
+
+        // add a like and display
+        const isLiking = event.currentTarget.classList.contains('fa-regular');
+        if (isLiking) {
+          likes += 1;
+          event.currentTarget.classList.remove('fa-regular', 'fa-heart');
+          event.currentTarget.classList.add('fa-solid', 'fa-heart');
+        } else {
+          likes -= 1;
+          event.currentTarget.classList.remove('fa-solid', 'fa-heart');
+          event.currentTarget.classList.add('fa-regular', 'fa-heart');
+        }
+        event.currentTarget.nextSibling.textContent = `${likes} like`;
+      });
+
+      // find the corrent number of like
+      this.listLikedMovies.filter((item) => {
+        if (item.item_id === liMovies.id) {
+          pLike.textContent = `${item.likes} like`;
+        }
+        return item;
+      });
     });
   }
 
@@ -60,5 +94,25 @@ export default class ListMovies {
     await data.json().then((data) => {
       this.list = data;
     });
+  }
+
+  /* involvement API: create a new APP */
+  createApp = async () => {
+    const data = await fetch(`${this.urlInvolvementAPI}/apps/`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+    return data;
+  }
+
+  saveLike = async (id, likes) => {
+    const result = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item_id: id, likes }),
+    });
+
+    return result.ok;
   }
 }
