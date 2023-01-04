@@ -86,10 +86,7 @@ export default class ListMovies {
         this.listLikedMovies.push({ item_id: id, likes });
       } else {
         this.listLikedMovies[likeIndex].likes = likes;
-        console.log(this.listLikedMovies[likeIndex].likes)
       }
-      
-
       // save like on the API
       this.saveLike(id, likes);
     });
@@ -101,6 +98,9 @@ export default class ListMovies {
       }
       return item;
     });
+
+    //Update the count
+    document.getElementById('count-movies').textContent = document.querySelectorAll('.movie').length
   }
 
   /* Get list of movies with a GET request to the API:  */
@@ -121,7 +121,6 @@ export default class ListMovies {
     const data = await fetch(`${this.urlInvolvementAPI}/apps/${this.appID}/likes/`);
     await data.json().then((listLikedMovies) => {
       this.listLikedMovies = listLikedMovies;
-      console.log('list like:', this.listLikedMovies)
     });
   }
 
@@ -132,8 +131,6 @@ export default class ListMovies {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(liked),
     });
-
-    console.log('saved like', liked, 'at ID:', id, 'result:', result.ok)
     return result.ok;
   }
 
