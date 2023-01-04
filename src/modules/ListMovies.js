@@ -88,7 +88,7 @@ export default class ListMovies {
   }
 
   /* Get list of movies with a GET request to the API:  */
-  getList = async () => {
+  getListMovies = async () => {
     // API Request
     const data = await fetch(`${this.urlApi}?page=${this.currentPage}`);
     await data.json().then((data) => {

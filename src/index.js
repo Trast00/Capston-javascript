@@ -4,6 +4,6 @@ import './style.css';
 const listMovies = new ListMovies();
 
 window.addEventListener('load', async () => {
-  await listMovies.getList();
+  await listMovies.getListMovies();
   listMovies.display();
 });
