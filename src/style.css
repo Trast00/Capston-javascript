@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Popins", sans-serif;
-  
+
   --color-primary: #fa0437;
   --color-secondary: #272a31;
   --color-tertiar: #d3d3d3;
@@ -113,6 +113,13 @@ body {
   margin-left: 8px;
   margin-right: 6px;
   min-width: 40px;
+}
+
+.date i {
+  padding: 8px;
+  border-radius: 50%;
+  background-color: #fa0437;
+  margin-right: 8px;
 }
 
 .movie-content .likes i {
@@ -266,7 +273,7 @@ textarea,
   justify-content: space-between;
 }
 
-.comment-container:nth-child(odd){
+.comment-container:nth-child(odd) {
   background-color: var(--color-text-color);
 }
 
@@ -274,13 +281,6 @@ textarea,
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-
-.date i {
-  padding: 8px;
-  border-radius: 50%;
-  background-color: #fa0437;
-  margin-right: 8px;
 }
 
 .comment {
