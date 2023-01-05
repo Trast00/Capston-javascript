@@ -38,7 +38,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://trast00.github.io/Capston-javascript/src/dist/index.html)
+- [Live Demo Link](https://trast00.github.io/Capston-javascript/dist/index.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
