@@ -43,7 +43,7 @@ class PopupMovies {
                 </div>
                   </div>
                   <h4 class="flex-center"> comments(<span class ="count">0</span>)</h4>
-                  <div class="flex-center comment-modal">
+                  <div class="comment-modal flex-center">
                       <div class="comment-container flex-center">
                           
                       </div>
@@ -98,17 +98,11 @@ class PopupMovies {
       return response.ok;
     };
 
-    countComments = async () => {
-      const movieComments = await this.getComment();
-      const count = document.querySelector('.count');
-      const numberOf = movieComments.length;
-      count.innerText = numberOf;
-    }
-
     displayAllComment = async () => {
-      this.countComments();
       const listComments = await this.getComment();
       const Display = document.querySelector('.comment-modal');
+      const count = document.querySelector('.count');
+      count.textContent = listComments.length;
       Display.innerHTML = '';
       listComments.forEach((comment) => {
         Display.innerHTML += `
