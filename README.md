@@ -7,6 +7,7 @@
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [🚀 Live Demo ](#-live-demo-)
+  - [� Presentation Video ](#-presentation-video-)
   - [💻 Getting Started ](#-getting-started-)
     - [Setup](#setup)
     - [Install](#install)
@@ -19,6 +20,8 @@
 
 # 📖 ShowTime <a name="about-project"></a>
 **ShowTime** is Movie Streaming Website that use TV maze API to display a list of movies with detail. Users can leave comments and likes about their prefered movies.
+
+[video of presentation](https://www.loom.com/share/99aaffee950643ba895293ae357802c2)
 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -38,7 +41,10 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://trast00.github.io/Capston-javascript/dist/index.html)
+[Live Demo Link](https://trast00.github.io/Capston-javascript/dist/index.html)
+
+## 📺 Presentation Video <a name="live-demo"></a>
+[Presentation video](https://www.loom.com/share/99aaffee950643ba895293ae357802c2)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
