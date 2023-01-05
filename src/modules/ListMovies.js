@@ -28,6 +28,10 @@ class ListMovies {
     img.src = movie.image.medium;
     img.alt = `Movies ${movie.name} image`;
 
+    const date = document.createElement('p');
+    date.classList.add('movie-date');
+    date.textContent = movie.premiered;
+
     const content = document.createElement('div');
     content.classList.add('flex-center', 'movie-content');
     const h3 = document.createElement('h3');
@@ -38,6 +42,15 @@ class ListMovies {
     iconLike.classList.add('fa-regular', 'fa-heart');
     const pLike = document.createElement('p');
     if (this.listLikedMovies.containt) { pLike.textContent = '3 Like'; }
+
+    const ulListGenre = document.createElement('ul');
+    ulListGenre.classList.add('flex-center', 'list-genres');
+    movie.genres.forEach((genre) => {
+      const liGenre = document.createElement('li');
+      liGenre.classList.add('genre');
+      liGenre.textContent = genre;
+      ulListGenre.append(liGenre);
+    });
 
     const btnShowComment = document.createElement('button');
     btnShowComment.classList.add('btn-show-comment');
@@ -53,13 +66,19 @@ class ListMovies {
     /* List of append */
     divLikes.append(iconLike, pLike);
     content.append(h3, divLikes);
-    wrapper.append(img, content);
+    wrapper.append(img, date, content, ulListGenre);
     liMovies.append(wrapper, btnShowComment);
 
     const ulListMovies = document.getElementById('list-movies');
     ulListMovies.append(liMovies);
 
     iconLike.addEventListener('click', (event) => {
+      const icons = event.currentTarget;
+      const isLiked = (icons.classList.contains('fa-solid'));
+      if (isLiked) {
+        return;
+      }
+
       const { id } = liMovies;
       let likes = 0;
       let likeIndex = -1;
@@ -74,15 +93,10 @@ class ListMovies {
 
       // add a like and display
       likes += 1;
-      const icons = event.currentTarget;
+
       icons.classList.remove('fa-regular', 'fa-heart');
       icons.classList.add('fa-solid', 'fa-heart');
-      icons.nextSibling.textContent = `${likes} like`;
-
-      setTimeout(() => {
-        icons.classList.remove('fa-solid', 'fa-heart');
-        icons.classList.add('fa-regular', 'fa-heart');
-      }, 400);
+      icons.nextSibling.textContent = `${likes}`;
 
       // save like on the list
       if (likeIndex === -1) {
@@ -97,7 +111,7 @@ class ListMovies {
     // find the corrent number of like
     this.listLikedMovies.filter((item) => {
       if (item.item_id === liMovies.id) {
-        pLike.textContent = `${item.likes} like`;
+        pLike.textContent = `${item.likes}`;
       }
       return item;
     });
