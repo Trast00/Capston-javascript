@@ -18,7 +18,7 @@
   - [📝 License ](#-license-)
 
 # 📖 ShowTime <a name="about-project"></a>
-**ShowTime** Movie Streaming Website that use TV maze API to display a list of movies with detail. Users can leave comments and likes about their prefered movies.
+**ShowTime** is Movie Streaming Website that use TV maze API to display a list of movies with detail. Users can leave comments and likes about their prefered movies.
 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -38,7 +38,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://trast00.github.io/Capston-javascript/src/dist/index.html)
+- [Live Demo Link](https://trast00.github.io/Capston-javascript/dist/index.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
