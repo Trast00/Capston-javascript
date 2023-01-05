@@ -1,4 +1,4 @@
-const showPopup = require('./popup.js');
+const PopupMovies = require('./PopupMovies.js');
 
 class ListMovies {
   constructor() {
@@ -45,7 +45,10 @@ class ListMovies {
 
     /* Event Listner */
     btnShowComment.addEventListener('click', () => {
-      showPopup(movie);
+      const popup = new PopupMovies();
+      popup.showPopup(movie);
+      popup.displayAllComment();
+      popup.getComment();
     });
     /* List of append */
     divLikes.append(iconLike, pLike);
