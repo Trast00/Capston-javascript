@@ -28,9 +28,9 @@ class ListMovies {
     img.src = movie.image.medium;
     img.alt = `Movies ${movie.name} image`;
 
-    const date = document.createElement('p')
-    date.classList.add('movie-date')
-    date.textContent = movie.premiered
+    const date = document.createElement('p');
+    date.classList.add('movie-date');
+    date.textContent = movie.premiered;
 
     const content = document.createElement('div');
     content.classList.add('flex-center', 'movie-content');
@@ -43,14 +43,14 @@ class ListMovies {
     const pLike = document.createElement('p');
     if (this.listLikedMovies.containt) { pLike.textContent = '3 Like'; }
 
-    const ulListGenre = document.createElement('ul')
-    ulListGenre.classList.add('flex-center', 'list-genres')
-    movie.genres.forEach(genre => {
-      const liGenre = document.createElement('li')
-      liGenre.classList.add('genre')
-      liGenre.textContent = genre
-      ulListGenre.append(liGenre)
-    })
+    const ulListGenre = document.createElement('ul');
+    ulListGenre.classList.add('flex-center', 'list-genres');
+    movie.genres.forEach((genre) => {
+      const liGenre = document.createElement('li');
+      liGenre.classList.add('genre');
+      liGenre.textContent = genre;
+      ulListGenre.append(liGenre);
+    });
 
     const btnShowComment = document.createElement('button');
     btnShowComment.classList.add('btn-show-comment');

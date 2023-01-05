@@ -4,8 +4,8 @@ import './style.css';
 const listMovies = new ListMovies();
 
 const displayLoader = (displayed) => {
-  const main = document.querySelector('.main-container')
-  if (displayed){
+  const main = document.querySelector('.main-container');
+  if (displayed) {
     const loader = `
     <div class="loader" title="7">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -26,17 +26,17 @@ const displayLoader = (displayed) => {
           <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
         </rect>
       </svg>
-    </div>`
-    main.innerHTML += loader
-  }else {
+    </div>`;
+    main.innerHTML += loader;
+  } else {
     main.querySelector('.loader')
-    .classList.add('hidden')
+      .classList.add('hidden');
   }
-}
+};
 
 window.addEventListener('load', async () => {
-  displayLoader(true)
+  displayLoader(true);
   await listMovies.getListLikes();
   await listMovies.getListMovies();
-  displayLoader(false)
+  displayLoader(false);
 });

@@ -2,12 +2,12 @@ class PopupMovies {
   constructor() {
     this.currentMoviesID = undefined;
     this.listComent = [];
-    this.API = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JJFDApwrWpJNeY3nWzvU/comments';
+    this.API = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/SfXJVXbXl4mhQfF5BbuY/comments';
   }
 
     getComment = async () => {
       try {
-        const AvatarURL = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JJFDApwrWpJNeY3nWzvU/comments?item_id=${this.currentMoviesID}`);
+        const AvatarURL = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/SfXJVXbXl4mhQfF5BbuY/comments?item_id=${this.currentMoviesID}`);
         const response = await AvatarURL.json();
         if (response.error !== undefined || response === undefined) {
           return [];
@@ -22,13 +22,13 @@ class PopupMovies {
       this.currentMoviesID = movie.id;
       const projectModal = document.querySelector('.popup');
       const body = document.querySelector('main');
-      projectModal.style.display = 'block';
+      projectModal.style.display = 'flex';
       const modalVisible = `
-                  <div class="popup-modal">
+                  <div class="popup-modal flex-center">
                   <div class="image-close flex-center">
-                      <div class="modal-image">
-                          <img src="${movie.image.medium}" alt="">
-                          <h3 class="flex-center movie-title">${movie.name}</h3>
+                      <div class="modal-image flex-center">
+                          <img src="${movie.image.original}" alt="">
+                          <h3 class="movie-title">${movie.name}</h3>
                       </div>
                       <div class="close"> <i class="fa-solid fa-xmark"></i></div>
                   </div>
@@ -42,21 +42,20 @@ class PopupMovies {
                   <p>language: <span>${movie.language}</span></p>
                 </div>
                   </div>
-                  <h4 class="flex-center"> comments(<span class ="count">0</span>)</h4>
+                  <h4 class="flex-center"> Comments(<span class ="count">0</span>)</h4>
+                  <div class="flex-center type-comment-modal">
+                      <form class="form flex-center">
+                          <input type="text" name="name" id="name" placeholder="Your name">
+                          <textarea placeholder ="Type comment" class="textarea" name="comment" id="comment" cols="30" rows="10"></textarea>
+                          <button class="btn-show-comment commnet-btn">Comment<span> <i class="fa-solid fa-comment"></i></span></button>
+                      </form>
+      
+                  </div>
                   <div class="comment-modal flex-center">
                       <div class="comment-container flex-center">
                           
                       </div>
                   </div>
-                  <div class="flex-center type-comment-modal">
-                      <form class="form flex-center">
-                          <input type="text" name="name" id="name" placeholder="Your name">
-                          <textarea class="textarea" name="comment" id="comment" cols="30" rows="10"></textarea>
-                          <button class="commnet-btn">comment</button>
-                      </form>
-      
-                  </div>
-      
               </div>`;
       body.style.position = 'fixed';
       projectModal.innerHTML = modalVisible;
@@ -84,7 +83,7 @@ class PopupMovies {
     postComment = async (id) => {
       const userName = document.querySelector('#name');
       const comment = document.querySelector('#comment');
-      const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JJFDApwrWpJNeY3nWzvU/comments', {
+      const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/SfXJVXbXl4mhQfF5BbuY/comments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +106,8 @@ class PopupMovies {
       listComments.forEach((comment) => {
         Display.innerHTML += `
         <div class="comment-container flex-center">
-        <p class="date"><span>${comment.creation_date} </span><span>${comment.username}: </span><span> ${comment.comment} </span></p>
+        <p class="date"><span><i class="fa-solid fa-user"> </i><span>${comment.username} </span> </span><span>${comment.creation_date} </span></p>
+        <p class = "comment"><span> ${comment.comment} </span></p>
         </div>
         `;
       });
