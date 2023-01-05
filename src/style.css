@@ -125,6 +125,11 @@ textarea,
   flex-direction: column;
 }
 
+.popup-modal {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .close {
   height: 300px;
 }

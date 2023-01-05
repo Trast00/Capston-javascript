@@ -74,13 +74,11 @@ class PopupMovies {
         comment.value = '';
       });
 
-      const closeModal = document.getElementsByClassName('close');
-      for (let i = 0; i < closeModal.length; i += 1) {
-        closeModal[i].addEventListener('click', () => {
-          projectModal.style.display = 'none';
-          body.style.position = 'relative';
-        });
-      }
+      const closeModal = document.querySelector('.close');
+      closeModal.addEventListener('click', () => {
+        projectModal.style.display = 'none';
+        body.style.position = 'relative';
+      });
     };
 
     postComment = async (id) => {
@@ -100,7 +98,15 @@ class PopupMovies {
       return response.ok;
     };
 
+    countComments = async () => {
+      const movieComments = await this.getComment();
+      const count = document.querySelector('.count');
+      const numberOf = movieComments.length;
+      count.innerText = numberOf;
+    }
+
     displayAllComment = async () => {
+      this.countComments();
       const listComments = await this.getComment();
       const Display = document.querySelector('.comment-modal');
       Display.innerHTML = '';
