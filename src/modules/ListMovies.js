@@ -90,7 +90,7 @@ class ListMovies {
       const icons = event.currentTarget;
       icons.classList.remove('fa-regular', 'fa-heart');
       icons.classList.add('fa-solid', 'fa-heart');
-      icons.nextSibling.textContent = `${likes} like`;
+      icons.nextSibling.textContent = `${likes}`;
 
       setTimeout(() => {
         icons.classList.remove('fa-solid', 'fa-heart');

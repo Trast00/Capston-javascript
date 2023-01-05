@@ -38,6 +38,5 @@ window.addEventListener('load', async () => {
   displayLoader(true)
   await listMovies.getListLikes();
   await listMovies.getListMovies();
-  listMovies.display();
   displayLoader(false)
 });
