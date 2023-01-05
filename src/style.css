@@ -5,12 +5,28 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Popins", sans-serif;
+  
+  --color-primary: #fa0437;
+  --color-secondary: #272a31;
+  --color-tertiar: #d3d3d3;
+  --color-text-color: #4a4d54;
+  --color-background: #181b1f;
+  --color-background-ligth: #202125;
+}
+
+body {
+  color: white;
+  background-color: var(--color-background);
 }
 
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hidden {
+  display: none;
 }
 
 .header {
@@ -38,11 +54,267 @@
 }
 
 .nav-bar ul li:nth-child(2) {
-  text-decoration: underline;
+  border-bottom: 2px solid var(--color-primary);
 }
 
 .main-container {
-  height: 80vh;
+  flex-direction: column;
+  min-height: 600px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.list-movies {
+  width: 90%;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.movie {
+  width: 250px;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 4px;
+  margin-top: 12px;
+  background-color: var(--color-background-ligth);
+  transition-duration: 500ms;
+}
+
+.movie img {
+  width: 250px;
+  height: 250px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.movie-date {
+  font-size: 12px;
+  margin-left: 6px;
+  color: var(--color-text-color);
+}
+
+.movie-content {
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-left: 6px;
+}
+
+.movie-content h3 {
+  min-height: 44px;
+}
+
+.movie-content .likes {
+  margin-left: 8px;
+  margin-right: 6px;
+  min-width: 40px;
+}
+
+.movie-content .likes i {
+  margin-right: 8px;
+}
+
+.list-genres {
+  height: 26px;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-left: 6px;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.genre {
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 6px;
+  padding: 6px;
+  border-radius: 4px;
+  color: var(--color-text-color);
+  background-color: #090a0c;
+}
+
+.btn-show-comment {
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 2px;
+  background-color: #fa0437;
+  justify-self: flex-end;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.btn-show-comment:hover {
+  background-color: #c90028;
+}
+
+.pages {
+  width: 90%;
+  padding: 8px;
+  justify-content: space-between;
+}
+
+button,
+textarea,
+.form input {
+  outline: none;
+  color: #fff;
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  margin: 10px 0;
+  background-color: #515253;
+}
+
+.pages button {
+  width: 120px;
+  height: 40px;
+}
+
+.pages button:disabled {
+  opacity: 0.7;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  overflow-y: scroll;
+  background-color: rgba(24, 27, 31, 0.7);
+  flex-direction: column;
+}
+
+.popup-modal {
+  flex-direction: column;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: var(--color-background);
+}
+
+.close {
+  margin-right: 11px;
+  align-self: flex-end;
+}
+
+.image-close {
+  flex-direction: column-reverse;
+}
+
+.image-close .fa-solid {
+  padding-top: 0;
+  font-size: 25px;
+  opacity: 0.7;
+}
+
+.modal-image {
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal-image img {
+  min-width: 350px;
+  max-width: 95%;
+  max-height: 550px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.movie-title {
+  padding-top: 8px;
+  font-size: 25px;
+  width: 95%;
+}
+
+.description {
+  margin: 20px 0;
+  width: 95%;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #565758;
+  font-weight: 600;
+}
+
+.start-end p,
+.movie-for p {
+  padding: 2.5px 2.5px;
+}
+
+.comment-modal {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 95%;
+  margin: 20px 0;
+}
+
+.comment-container {
+  font-size: 14px;
+  padding: 10px;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+  justify-content: space-between;
+}
+
+.comment-container:nth-child(odd){
+  background-color: var(--color-text-color);
+}
+
+.date {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.date i {
+  padding: 8px;
+  border-radius: 50%;
+  background-color: #fa0437;
+  margin-right: 8px;
+}
+
+.comment {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.type-comment-modal {
+  width: 100%;
+}
+
+.form {
+  width: 95%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.textarea,
+#name,
+.commnet-btn {
+  font-size: 17px;
+  width: 100%;
+}
+
+#name {
+  padding: 0 10px;
+}
+
+.textarea {
+  padding: 10px;
+  margin: 10px 0;
+  height: 120px;
 }
 
 .foot {
