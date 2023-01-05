@@ -73,6 +73,12 @@ class ListMovies {
     ulListMovies.append(liMovies);
 
     iconLike.addEventListener('click', (event) => {
+      const icons = event.currentTarget;
+      const isLiked = (icons.classList.contains('fa-solid'));
+      if (isLiked) {
+        return;
+      }
+
       const { id } = liMovies;
       let likes = 0;
       let likeIndex = -1;
@@ -87,15 +93,10 @@ class ListMovies {
 
       // add a like and display
       likes += 1;
-      const icons = event.currentTarget;
+
       icons.classList.remove('fa-regular', 'fa-heart');
       icons.classList.add('fa-solid', 'fa-heart');
       icons.nextSibling.textContent = `${likes}`;
-
-      setTimeout(() => {
-        icons.classList.remove('fa-solid', 'fa-heart');
-        icons.classList.add('fa-regular', 'fa-heart');
-      }, 400);
 
       // save like on the list
       if (likeIndex === -1) {
