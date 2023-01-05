@@ -1,4 +1,4 @@
-export default class PopupMovies {
+class PopupMovies {
   constructor() {
     this.currentMoviesID = undefined;
     this.listComent = [];
@@ -42,7 +42,7 @@ export default class PopupMovies {
                   <p>language: <span>${movie.language}</span></p>
                 </div>
                   </div>
-                  <h4 class="flex-center"> comments(<span>2</span>)</h4>
+                  <h4 class="flex-center"> comments(<span class ="count">0</span>)</h4>
                   <div class="flex-center comment-modal">
                       <div class="comment-container flex-center">
                           
@@ -103,7 +103,6 @@ export default class PopupMovies {
     displayAllComment = async () => {
       const listComments = await this.getComment();
       const Display = document.querySelector('.comment-modal');
-
       Display.innerHTML = '';
       listComments.forEach((comment) => {
         Display.innerHTML += `
@@ -114,3 +113,5 @@ export default class PopupMovies {
       });
     };
 }
+
+module.exports = PopupMovies;
