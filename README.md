@@ -2,7 +2,7 @@
 
 # 📗 Table of Contents
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Capston-javascript ](#-capston-javascript-)
+- [📖 ShowTime ](#-showtime-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -17,8 +17,8 @@
   - [⭐️ Show your support ](#️-show-your-support-)
   - [📝 License ](#-license-)
 
-# 📖 Capston-javascript <a name="about-project"></a>
-This is a project done during the microverse program
+# 📖 ShowTime <a name="about-project"></a>
+**ShowTime** Movie Streaming Website that use TV maze API to display a list of movies with detail. Users can leave comments and likes about their prefered movies.
 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -31,13 +31,14 @@ This is a project done during the microverse program
 ### Key Features <a name="key-features"></a>
 
 - **Use ES6**
+- **Show Popup detail**
 - **Use Api [tvmaze](https://www.tvmaze.com/api)**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Live Demo Link](https://trast00.github.io/Capston-javascript/src/dist/index.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -98,8 +99,10 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Comment section**
-- [ ] **More Personnalized UI**
+- [x] **Comment section**
+- [ ] **Search bar**
+- [ ] **List of episodes**
+- [x] **More Personnalized UI**
 
 
 ## ⭐️ Show your support <a name="support"></a>

@@ -24,9 +24,9 @@ class PopupMovies {
       const body = document.querySelector('main');
       projectModal.style.display = 'flex';
 
-      let pEnded = `${movie.ended}`
-      if(movie.ended===null){
-        pEnded = `In progress`
+      let pEnded = `${movie.ended}`;
+      if (movie.ended === null) {
+        pEnded = 'In progress';
       }
 
       const modalVisible = `
@@ -64,8 +64,6 @@ class PopupMovies {
                   </div>
               </div>`;
 
-
-      
       body.style.position = 'fixed';
       projectModal.innerHTML = modalVisible;
 
