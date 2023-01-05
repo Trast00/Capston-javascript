@@ -23,6 +23,12 @@ class PopupMovies {
       const projectModal = document.querySelector('.popup');
       const body = document.querySelector('main');
       projectModal.style.display = 'flex';
+
+      let pEnded = `${movie.ended}`
+      if(movie.ended===null){
+        pEnded = `In progress`
+      }
+
       const modalVisible = `
                   <div class="popup-modal flex-center">
                   <div class="image-close flex-center">
@@ -35,11 +41,11 @@ class PopupMovies {
                   <div class="flex-center description">
                   <div class="start-end">
                   <p> Premiered: <span>${movie.premiered}</span></p>
-                  <p>Ended: <span>${movie.ended}</span></p>
+                  <p id='movie-ended'>Ended: <span>${pEnded}</span></p>
                 </div>
                 <div class="movie-for">
                   <p>Genres: <span>${movie.genres}</span></p>
-                  <p>language: <span>${movie.language}</span></p>
+                  <p>Language: <span>${movie.language}</span></p>
                 </div>
                   </div>
                   <h4 class="flex-center"> Comments(<span class ="count">0</span>)</h4>
@@ -57,6 +63,9 @@ class PopupMovies {
                       </div>
                   </div>
               </div>`;
+
+
+      
       body.style.position = 'fixed';
       projectModal.innerHTML = modalVisible;
 
