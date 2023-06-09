@@ -39,6 +39,15 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Preview
+
+<details>
+  <summary>Preview</summary>
+  
+  ![image](https://github.com/Trast00/Capston-javascript/assets/74411135/b0c43fe1-488c-4392-bae9-10c7e02cbfc8)
+  
+</details>
+
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 [Live Demo Link](https://trast00.github.io/Capston-javascript/dist/index.html)
